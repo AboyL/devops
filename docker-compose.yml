@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  redis222:
+    image: "redis:latest"
+  web:
+    build: ./test-server
+    image: test-server
+    depends_on:
+      - redis222
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./test-server/file:/file
